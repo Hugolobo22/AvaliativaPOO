@@ -201,7 +201,6 @@ class Jogo { // Classe Jogo.
         this.lutador = lutador;
         this.coliseu = coliseu;
     }
-
     jogar(){ // Método Jogar
         while (true) { // Enquanto o valor for true, o código ocorre.
             const opcaoSelecionada = this.menu.imprimirMenu(); // Primeiro acontece aquele código do início, onde o usuário vai inserir uma das opções do Menu.
@@ -240,13 +239,17 @@ class Jogo { // Classe Jogo.
             } else {
                 console.log("Opção inválida. Por favor, selecione novamente.");
             }
-
+    
             console.log("Informações do Monstro:");
             console.log("HP:", this.coliseu.monstro.hp);
             console.log("Ataque:", this.coliseu.monstro.ataqueM());
-
+    
             console.log("Informações do Lutador:");
             this.lutador.exibirInfoLutador();
+    
+            if (this.coliseu.monstro.hp <= 0 || this.lutador.hp <= 0) { // Verifica se o combate deve continuar ou encerrar com base nos HPs restantes
+                break;
+            }
         }
     }
 }
